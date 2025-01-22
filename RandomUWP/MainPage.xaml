@@ -10,32 +10,29 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
     <Grid>
-        <Border VerticalAlignment="Top" HorizontalAlignment="Center" Width="650" Margin="24" Padding="8">
-            <Grid VerticalAlignment="Stretch">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-                <TextBlock x:Name="ui_text_min" Grid.Row="0" Grid.Column="0" Margin="10" Text="最小值" VerticalAlignment="Center" FontSize="24"/>
-                <muxc:NumberBox x:Name="ui_numbox_min" Grid.Row="0" Grid.Column="1" Margin="10" SpinButtonPlacementMode="Inline" VerticalAlignment="Center" HorizontalAlignment="Right" Height="50" Width="350" Value="1" FontSize="24"/>
+        <muxc:NavigationView x:Name="NavView" Grid.Column="0" Grid.Row="0" PaneDisplayMode="Left" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" IsPaneToggleButtonVisible="False" Loaded="NavigationView_Loaded" SelectionChanged="NavigationView_SelectionChanged">
 
-                <TextBlock x:Name="ui_text_max" Grid.Row="1" Grid.Column="0" Margin="10" Text="最大值" VerticalAlignment="Center" FontSize="24"/>
-                <muxc:NumberBox x:Name="ui_numbox_max" Grid.Row="1" Grid.Column="1" Margin="10" SpinButtonPlacementMode="Inline" VerticalAlignment="Center" HorizontalAlignment="Right" Height="50" Width="350" Value="57" FontSize="24"/>
+        <muxc:NavigationView.MenuItems>
+            <muxc:NavigationViewItem   Content="数字模式" Tag="RandomUWP.NumMode">
+                <muxc:NavigationViewItem.Icon>
+                    <FontIcon Glyph="&#xF261;" FontFamily="Segoe MDL2 Assets"/>
+                </muxc:NavigationViewItem.Icon>
+            </muxc:NavigationViewItem>
+                <muxc:NavigationViewItem Icon="List" Content="列表模式" Tag="RandomUWP.ListMode"/>
+        </muxc:NavigationView.MenuItems>
 
-                <TextBlock x:Name="ui_text_times" Grid.Row="2" Grid.Column="0" Margin="10" Text="次数" VerticalAlignment="Center" FontSize="24"/>
-                <muxc:NumberBox x:Name="ui_numbox_times" Grid.Row="2" Grid.Column="1" Margin="10" SpinButtonPlacementMode="Inline" VerticalAlignment="Center" HorizontalAlignment="Right" Height="50" Width="350" Value="1" FontSize="24"/>
-            </Grid>
-        </Border>
-        <TextBlock x:Name="result_text" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Result" FontSize="24" Visibility="Collapsed"/>
-        <Button x:Name="start_button" Content="Random!" Margin="24" VerticalAlignment="Bottom" Height="65" Width="300" Click="start_button_Click" HorizontalAlignment="Right"/>
-        <Button x:Name="next_button" Content="Next" Margin="24" VerticalAlignment="Bottom" Height="65" Width="300" HorizontalAlignment="Right" Visibility="Collapsed" Click="next_button_Click"/>
-        <Button x:Name="finish_button" Content="Finish" Margin="24" VerticalAlignment="Bottom" Height="65" Width="300" HorizontalAlignment="Right" Visibility="Collapsed" Click="finish_button_Click"/>
+        </muxc:NavigationView >
+
+        <Frame x:Name="ContentFrame" Grid.Column="1" Grid.Row="0"/>
+       
+
     </Grid>
 </Page>
