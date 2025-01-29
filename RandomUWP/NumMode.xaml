@@ -32,9 +32,9 @@
             <muxc:NumberBox x:Name="ui_numbox_times" Grid.Row="2" Grid.Column="1" Margin="10" SpinButtonPlacementMode="Inline" VerticalAlignment="Center" HorizontalAlignment="Right" Height="50" Width="350" Value="1" FontSize="24"/>
         </Grid>
         <TextBlock x:Name="result_text" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Result" FontSize="48" Visibility="Collapsed"/>
-        <Button x:Name="start_button" Content="Random!" Margin="24" VerticalAlignment="Bottom" Height="65" Width="300" Click="start_button_Click" HorizontalAlignment="Right"/>
-        <Button x:Name="next_button" Content="Next" Margin="24" VerticalAlignment="Bottom" Height="65" Width="300" HorizontalAlignment="Right" Visibility="Collapsed" Click="next_button_Click"/>
-        <Button x:Name="finish_button" Content="Finish" Margin="24" VerticalAlignment="Bottom" Height="65" Width="300" HorizontalAlignment="Right" Visibility="Collapsed" Click="finish_button_Click"/>
+        <Button x:Name="start_button" Content="Random!" FontSize="24" Margin="24" VerticalAlignment="Bottom" Height="65" Width="300" Click="start_button_Click" HorizontalAlignment="Right"/>
+        <Button x:Name="next_button" Content="Next" Margin="24" FontSize="24" VerticalAlignment="Bottom" Height="65" Width="300" HorizontalAlignment="Right" Visibility="Collapsed" Click="next_button_Click"/>
+        <Button x:Name="finish_button" Content="Finish" Margin="24" FontSize="24" VerticalAlignment="Bottom" Height="65" Width="300" HorizontalAlignment="Right" Visibility="Collapsed" Click="finish_button_Click"/>
 
     </Grid>
 </Page>

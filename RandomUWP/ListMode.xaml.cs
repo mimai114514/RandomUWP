@@ -109,7 +109,9 @@ namespace RandomUWP
         {
             try
             {
-                StorageFile listFile = await StorageFile.GetFileFromPathAsync("C:\\Users\\Infinity\\Documents\\dev\\RandomUWP\\list.txt");
+
+                string listFilePath = UserDataPaths.GetDefault().Documents + @"\dev\RandomUWP\list.txt";
+                StorageFile listFile = await StorageFile.GetFileFromPathAsync(listFilePath);
                 IList<string> list = await FileIO.ReadLinesAsync(listFile);
                 listCount = Convert.ToInt16(list[0]);
                 int current_line = 0;
