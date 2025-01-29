@@ -21,10 +21,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock x:Name="ui_text_list" Grid.Row="0" Grid.Column="0" Margin="10" Text="列表" VerticalAlignment="Stretch" FontSize="24"/>
+            <TextBlock x:Name="ui_text_list" Grid.Row="0" Grid.Column="0" Margin="10" Text="列表" VerticalAlignment="Center" FontSize="24"/>
             <ComboBox x:Name="ui_combobox_list" Grid.Row="0" Grid.Column="1" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Right" Height="50" Width="500" FontSize="24"/>
 
-            <TextBlock x:Name="ui_text_times" Grid.Row="1" Grid.Column="0" Margin="10" Text="次数" VerticalAlignment="Stretch" FontSize="24"/>
+            <TextBlock x:Name="ui_text_times" Grid.Row="1" Grid.Column="0" Margin="10" Text="次数" VerticalAlignment="Center" FontSize="24"/>
             <muxc:NumberBox x:Name="ui_numbox_times" Grid.Row="1" Grid.Column="1" Margin="10" SpinButtonPlacementMode="Inline" HorizontalAlignment="Right" Height="50" Width="350" Value="1" FontSize="24" VerticalAlignment="Center"/>
         </Grid>
         <TextBlock x:Name="result_text" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Result" FontSize="48" Visibility="Collapsed"/>
