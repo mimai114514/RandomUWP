@@ -34,7 +34,7 @@ namespace RandomUWP
             this.InitializeComponent();
         }
 
-        public int times_left = 1;
+        public int count_left = 1;
         
         public int listCount = 0;
         public int listReadingCount = 0;
@@ -46,25 +46,29 @@ namespace RandomUWP
         public void hide_settings_ui()
         {
             ui_combobox_list.Visibility = Visibility.Collapsed;
-            ui_numbox_times.Visibility = Visibility.Collapsed;
-            ui_text_times.Visibility = Visibility.Collapsed;
+            ui_numbox_count.Visibility = Visibility.Collapsed;
+            ui_text_count.Visibility = Visibility.Collapsed;
             ui_text_list.Visibility = Visibility.Collapsed;
+            ui_list_border.Visibility = Visibility.Collapsed;
+            ui_count_border.Visibility = Visibility.Collapsed;
             start_button.Visibility = Visibility.Collapsed;
         }
 
         public void show_settings_ui()
         {
             ui_combobox_list.Visibility = Visibility.Visible;
-            ui_numbox_times.Visibility = Visibility.Visible;
-            ui_text_times.Visibility = Visibility.Visible;
+            ui_numbox_count.Visibility = Visibility.Visible;
+            ui_text_count.Visibility = Visibility.Visible;
             ui_text_list.Visibility = Visibility.Visible;
+            ui_list_border.Visibility = Visibility.Visible;
+            ui_count_border.Visibility = Visibility.Visible;
             start_button.Visibility = Visibility.Visible;
         }
 
         private void start_button_Click(object sender, RoutedEventArgs e)
         {
             start_button.Visibility = Visibility.Collapsed;
-            times_left = Convert.ToInt32(ui_numbox_times.Text);
+            count_left = Convert.ToInt32(ui_numbox_count.Text);
             random();
         }
 
@@ -72,7 +76,7 @@ namespace RandomUWP
         {
             hide_settings_ui();
             int chosenListIndex= ui_combobox_list.SelectedIndex+1;
-            if (times_left == 1)
+            if (count_left == 1)
             {
                 next_button.Visibility = Visibility.Collapsed;
                 finish_button.Visibility = Visibility.Visible;
@@ -89,7 +93,7 @@ namespace RandomUWP
             result_text.Visibility = Visibility.Visible;
 
 
-            times_left--;
+            count_left--;
         }
 
         private void finish_button_Click(object sender, RoutedEventArgs e)

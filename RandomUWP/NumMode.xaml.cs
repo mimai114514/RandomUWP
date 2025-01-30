@@ -20,7 +20,7 @@ namespace RandomUWP
 
     public sealed partial class NumMode : Page
     {
-        public int times_left = 1;
+        public int count_left = 1;
         public NumMode()
         {
             this.InitializeComponent();
@@ -31,10 +31,16 @@ namespace RandomUWP
         {
             ui_numbox_min.Visibility = Visibility.Collapsed;
             ui_numbox_max.Visibility = Visibility.Collapsed;
-            ui_numbox_times.Visibility = Visibility.Collapsed;
+            ui_numbox_count.Visibility = Visibility.Collapsed;
             ui_text_min.Visibility = Visibility.Collapsed;
             ui_text_max.Visibility = Visibility.Collapsed;
-            ui_text_times.Visibility = Visibility.Collapsed;
+            ui_text_count.Visibility = Visibility.Collapsed;
+            ui_text_min_mini.Visibility = Visibility.Collapsed;
+            ui_text_max_mini.Visibility = Visibility.Collapsed;
+            ui_text_count_mini.Visibility = Visibility.Collapsed;
+            ui_min_border.Visibility = Visibility.Collapsed;
+            ui_max_border.Visibility = Visibility.Collapsed;
+            ui_count_border.Visibility = Visibility.Collapsed;
             start_button.Visibility = Visibility.Collapsed;
         }
 
@@ -42,17 +48,23 @@ namespace RandomUWP
         {
             ui_numbox_min.Visibility = Visibility.Visible;
             ui_numbox_max.Visibility = Visibility.Visible;
-            ui_numbox_times.Visibility = Visibility.Visible;
+            ui_numbox_count.Visibility = Visibility.Visible;
             ui_text_min.Visibility = Visibility.Visible;
             ui_text_max.Visibility = Visibility.Visible;
-            ui_text_times.Visibility = Visibility.Visible;
+            ui_text_count.Visibility = Visibility.Visible;
+            ui_text_min_mini.Visibility = Visibility.Visible;
+            ui_text_max_mini.Visibility = Visibility.Visible;
+            ui_text_count_mini.Visibility = Visibility.Visible;
+            ui_min_border.Visibility = Visibility.Visible;
+            ui_max_border.Visibility = Visibility.Visible;
+            ui_count_border.Visibility = Visibility.Visible;
             start_button.Visibility = Visibility.Visible;
         }
 
         private void start_button_Click(object sender, RoutedEventArgs e)
         {
             start_button.Visibility = Visibility.Collapsed;
-            times_left = Convert.ToInt32(ui_numbox_times.Text);
+            count_left = Convert.ToInt32(ui_numbox_count.Text);
             random();
         }
 
@@ -60,7 +72,7 @@ namespace RandomUWP
         {
             hide_settings_ui();
             result_text.Visibility = Visibility.Visible;
-            if (times_left == 1)
+            if (count_left == 1)
             {
                 next_button.Visibility = Visibility.Collapsed;
                 finish_button.Visibility = Visibility.Visible;
@@ -72,8 +84,14 @@ namespace RandomUWP
             }
             Random random = new Random();
             result_text.Text = "被抽中的是:";
+            if(Convert.ToInt32(ui_numbox_min.Text)> Convert.ToInt32(ui_numbox_max.Text))
+            {
+                int temp = Convert.ToInt32(ui_numbox_min.Text);
+                ui_numbox_min.Text = ui_numbox_max.Text;
+                ui_numbox_max.Text = temp.ToString();
+            }
             result_text.Text += random.Next(Convert.ToInt32(ui_numbox_min.Text), Convert.ToInt32(ui_numbox_max.Text)).ToString();
-            times_left--;
+            count_left--;
         }
 
         private void finish_button_Click(object sender, RoutedEventArgs e)

@@ -6,35 +6,114 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="GhostWhite"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
     <Grid Padding="24">
-        <Grid VerticalAlignment="Top" HorizontalAlignment="Stretch" Padding="8">
+        <Grid VerticalAlignment="Top" HorizontalAlignment="Stretch" Padding="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="700"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock x:Name="ui_text_min" Grid.Row="0" Grid.Column="0" Margin="10" Text="最小值" VerticalAlignment="Center" FontSize="24"/>
-            <muxc:NumberBox x:Name="ui_numbox_min" Grid.Row="0" Grid.Column="1" Margin="10" SpinButtonPlacementMode="Inline" VerticalAlignment="Center" HorizontalAlignment="Right" Height="50" Width="350" Value="1" FontSize="24"/>
+            <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
+                <Border x:Name="ui_min_border" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" BorderBrush="LightGray" BorderThickness="1" Padding="8" CornerRadius="8" Margin="4">
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Row="0" Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="ui_text_min" Grid.Row="0" Grid.Column="0" Margin="4" Text="最小值" VerticalAlignment="Bottom" FontSize="22" />
+                            <TextBlock x:Name="ui_text_min_mini" Grid.Row="1" Grid.Column="0" Margin="4" Text="x∈Z" VerticalAlignment="Top" FontSize="14" />
+                        </Grid>
+                        <muxc:NumberBox x:Name="ui_numbox_min" Grid.Row="0" Grid.Column="1" Margin="4" SpinButtonPlacementMode="Inline" VerticalAlignment="Center" HorizontalAlignment="Right" Height="40" Width="300" Value="1" FontSize="22"/>
+                    </Grid>
+                </Border>
+                <Border x:Name="ui_max_border" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" BorderBrush="LightGray" BorderThickness="1" Padding="8" CornerRadius="8" Margin="4">
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Row="0" Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="ui_text_max" Grid.Row="0" Grid.Column="0" Margin="4" Text="最大值" VerticalAlignment="Bottom" FontSize="22" />
+                            <TextBlock x:Name="ui_text_max_mini" Grid.Row="1" Grid.Column="0" Margin="4" Text="y∈Z" VerticalAlignment="Top" FontSize="14" />
+                        </Grid>
+                        <muxc:NumberBox x:Name="ui_numbox_max" Grid.Row="0" Grid.Column="1" Margin="4" SpinButtonPlacementMode="Inline" VerticalAlignment="Center" HorizontalAlignment="Right" Height="40" Width="300" Value="57" FontSize="22"/>
+                    </Grid>
+                </Border>
+                <Border x:Name="ui_count_border" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="White" BorderBrush="LightGray" BorderThickness="1" Padding="8" CornerRadius="8" Margin="4">
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Row="0" Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="ui_text_count" Grid.Row="0" Grid.Column="0" Margin="4" Text="次数" VerticalAlignment="Bottom" FontSize="22" />
+                            <TextBlock x:Name="ui_text_count_mini" Grid.Row="1" Grid.Column="0" Margin="4" Text="z∈Z+" VerticalAlignment="Top" FontSize="14" />
+                        </Grid>
+                        <muxc:NumberBox x:Name="ui_numbox_count" Grid.Row="0" Grid.Column="1" Margin="4" SpinButtonPlacementMode="Inline" VerticalAlignment="Center" HorizontalAlignment="Right" Height="40" Width="300" Value="0" FontSize="22" Minimum="1" Text="1"/>
+                    </Grid>
+                </Border>
 
-            <TextBlock x:Name="ui_text_max" Grid.Row="1" Grid.Column="0" Margin="10" Text="最大值" VerticalAlignment="Center" FontSize="24"/>
-            <muxc:NumberBox x:Name="ui_numbox_max" Grid.Row="1" Grid.Column="1" Margin="10" SpinButtonPlacementMode="Inline" VerticalAlignment="Center" HorizontalAlignment="Right" Height="50" Width="350" Value="57" FontSize="24"/>
-
-            <TextBlock x:Name="ui_text_times" Grid.Row="2" Grid.Column="0" Margin="10" Text="次数" VerticalAlignment="Center" FontSize="24"/>
-            <muxc:NumberBox x:Name="ui_numbox_times" Grid.Row="2" Grid.Column="1" Margin="10" SpinButtonPlacementMode="Inline" VerticalAlignment="Center" HorizontalAlignment="Right" Height="50" Width="350" Value="1" FontSize="24"/>
-        </Grid>
+            </StackPanel>
+            
+           </Grid>
         <TextBlock x:Name="result_text" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Result" FontSize="48" Visibility="Collapsed"/>
-        <Button x:Name="start_button" Content="Random!" FontSize="24" Margin="24" VerticalAlignment="Bottom" Height="65" Width="300" Click="start_button_Click" HorizontalAlignment="Right"/>
-        <Button x:Name="next_button" Content="Next" Margin="24" FontSize="24" VerticalAlignment="Bottom" Height="65" Width="300" HorizontalAlignment="Right" Visibility="Collapsed" Click="next_button_Click"/>
-        <Button x:Name="finish_button" Content="Finish" Margin="24" FontSize="24" VerticalAlignment="Bottom" Height="65" Width="300" HorizontalAlignment="Right" Visibility="Collapsed" Click="finish_button_Click"/>
 
+        <Button x:Name="start_button"  FontSize="24" Margin="16" VerticalAlignment="Bottom" Height="75" Width="250" Click="start_button_Click" HorizontalAlignment="Right">
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon Symbol="Play" Margin="8" />
+                <TextBlock Text="Random!" VerticalAlignment="Center" FontSize="32"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="next_button" Margin="16" FontSize="24" VerticalAlignment="Bottom" Height="75" Width="250" HorizontalAlignment="Right" Visibility="Collapsed" Click="next_button_Click">
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon Symbol="Next" Margin="8"/>
+                <TextBlock Text="Next" VerticalAlignment="Center" FontSize="30"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="finish_button"  Margin="16" FontSize="24" VerticalAlignment="Bottom" Height="75" Width="250" HorizontalAlignment="Right" Visibility="Collapsed" Click="finish_button_Click">
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon Symbol="Accept" Margin="8"/>
+                <TextBlock Text="Finnish" VerticalAlignment="Center" FontSize="30"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </Page>

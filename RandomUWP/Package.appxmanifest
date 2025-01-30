@@ -11,7 +11,7 @@
   <Identity
     Name="d3db4620-e4df-43db-960a-59c4deb45772"
     Publisher="CN=Infinity, O=Infinity Network, C=CN"
-    Version="1.0.0.0" />
+    Version="1.2.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="d3db4620-e4df-43db-960a-59c4deb45772" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

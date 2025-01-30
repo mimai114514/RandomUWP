@@ -6,13 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="GhostWhite"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
     <Grid Padding="24">
         <StackPanel Orientation="Vertical">
             <TextBlock Margin="4" Text="Random Next" VerticalAlignment="Stretch" FontSize="48"/>
-            <TextBlock Margin="4" Text="version 1.0" VerticalAlignment="Stretch" FontSize="24"/>
+            <TextBlock Margin="4" Text="version 1.2" VerticalAlignment="Stretch" FontSize="24"/>
             <TextBlock Margin="4" Text="developed by Infinity." VerticalAlignment="Stretch" FontSize="24"/>
             <TextBlock Margin="4" Text="built with UWP and WinUI2" VerticalAlignment="Stretch" FontSize="24"/>
 
