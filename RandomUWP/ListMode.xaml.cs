@@ -43,6 +43,9 @@ namespace RandomUWP
         public int itemReadingCount = 0;
         public string[,] itemName = new string[100, 1000];
 
+        public int count = 0;
+        public string[] chosenItem = new string[1000];
+
         public void hide_settings_ui()
         {
             ui_combobox_list.Visibility = Visibility.Collapsed;
@@ -68,7 +71,7 @@ namespace RandomUWP
         private void start_button_Click(object sender, RoutedEventArgs e)
         {
             start_button.Visibility = Visibility.Collapsed;
-            count_left = Convert.ToInt32(ui_numbox_count.Text);
+            count = count_left = Convert.ToInt32(ui_numbox_count.Text);
             random();
         }
 
@@ -76,21 +79,49 @@ namespace RandomUWP
         {
             hide_settings_ui();
             int chosenListIndex= ui_combobox_list.SelectedIndex+1;
-            if (count_left == 1)
+            if (count_left == 0 && count != 1)
+            {
+
+                next_button.Visibility = Visibility.Collapsed;
+                finish_button.Visibility = Visibility.Visible;
+                result_text.Text = "本轮被抽中的有：\n";
+                for (int i = 1; i <= count; i++)
+                {
+                    result_text.Text += chosenItem[i-1] + "、";
+                    if (i % 4 == 0)
+                    {
+                        result_text.Text += "\n";
+                    }
+                }
+                result_text.Text = result_text.Text.Substring(0, result_text.Text.Length - 1);
+                if (count % 4 == 0)
+                    result_text.Text = result_text.Text.Substring(0, result_text.Text.Length - 1);
+                result_text.Text += "。";
+                result_text.Visibility = Visibility.Visible;
+            }
+            else if (count == 1)
             {
                 next_button.Visibility = Visibility.Collapsed;
                 finish_button.Visibility = Visibility.Visible;
+                Random random = new Random();
+                result_text.Text = "被抽中的是:";
+                int chosenItemIndex = random.Next(1, itemCount[chosenListIndex] + 1);
+                result_text.Text += itemName[chosenListIndex, chosenItemIndex];
+                chosenItem[count - count_left] = itemName[chosenListIndex, chosenItemIndex];
+                result_text.Visibility = Visibility.Visible;
             }
             else
             {
                 next_button.Visibility = Visibility.Visible;
                 finish_button.Visibility = Visibility.Collapsed;
+                Random random = new Random();
+                result_text.Text = "被抽中的是:";
+                int chosenItemIndex = random.Next(1, itemCount[chosenListIndex] + 1);
+                result_text.Text += itemName[chosenListIndex, chosenItemIndex];
+                chosenItem[count - count_left] = itemName[chosenListIndex, chosenItemIndex];
+                result_text.Visibility = Visibility.Visible;
             }
-            Random random = new Random();
-            result_text.Text = "被抽中的是:";
-            int chosenItemIndex = random.Next(1, itemCount[chosenListIndex]+1);
-            result_text.Text += itemName[chosenListIndex,chosenItemIndex];
-            result_text.Visibility = Visibility.Visible;
+            
 
 
             count_left--;

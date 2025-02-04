@@ -20,7 +20,10 @@ namespace RandomUWP
 
     public sealed partial class NumMode : Page
     {
+        public int count = 1;
         public int count_left = 1;
+        public int[] chosen = new int[1000];
+        public int chosenNum;
         public NumMode()
         {
             this.InitializeComponent();
@@ -64,33 +67,64 @@ namespace RandomUWP
         private void start_button_Click(object sender, RoutedEventArgs e)
         {
             start_button.Visibility = Visibility.Collapsed;
-            count_left = Convert.ToInt32(ui_numbox_count.Text);
+            count = count_left = Convert.ToInt32(ui_numbox_count.Text);
             random();
         }
 
         public void random()
         {
             hide_settings_ui();
-            result_text.Visibility = Visibility.Visible;
-            if (count_left == 1)
+            if (count_left == 0 && count != 1)
             {
                 next_button.Visibility = Visibility.Collapsed;
                 finish_button.Visibility = Visibility.Visible;
+                result_text.Text = "本轮被抽中的有：\n";
+                for (int i = 1; i <= count; i++)
+                {
+                    result_text.Text += chosen[i-1] + "、";
+                    if (i % 4 == 0)
+                    {
+                        result_text.Text += "\n";
+                    }
+                }
+                result_text.Text = result_text.Text.Substring(0, result_text.Text.Length - 1);
+                if(count % 4 ==0)
+                    result_text.Text = result_text.Text.Substring(0, result_text.Text.Length - 1);
+                result_text.Text += "。";
+            }
+            else if (count == 1)
+            {
+                next_button.Visibility = Visibility.Collapsed;
+                finish_button.Visibility = Visibility.Visible;
+                Random random = new Random();
+                result_text.Text = "被抽中的是:";
+                if (Convert.ToInt32(ui_numbox_min.Text) > Convert.ToInt32(ui_numbox_max.Text))
+                {
+                    int temp = Convert.ToInt32(ui_numbox_min.Text);
+                    ui_numbox_min.Text = ui_numbox_max.Text;
+                    ui_numbox_max.Text = temp.ToString();
+                }
+                chosenNum = random.Next(Convert.ToInt32(ui_numbox_min.Text), Convert.ToInt32(ui_numbox_max.Text));
+                result_text.Text += chosenNum.ToString();
+                chosen[count - count_left] = chosenNum;
             }
             else
             {
                 next_button.Visibility = Visibility.Visible;
                 finish_button.Visibility = Visibility.Collapsed;
+                Random random = new Random();
+                result_text.Text = "被抽中的是:";
+                if (Convert.ToInt32(ui_numbox_min.Text) > Convert.ToInt32(ui_numbox_max.Text))
+                {
+                    int temp = Convert.ToInt32(ui_numbox_min.Text);
+                    ui_numbox_min.Text = ui_numbox_max.Text;
+                    ui_numbox_max.Text = temp.ToString();
+                }
+                chosenNum = random.Next(Convert.ToInt32(ui_numbox_min.Text), Convert.ToInt32(ui_numbox_max.Text));
+                result_text.Text += chosenNum.ToString();
+                chosen[count - count_left] = chosenNum;
             }
-            Random random = new Random();
-            result_text.Text = "被抽中的是:";
-            if(Convert.ToInt32(ui_numbox_min.Text)> Convert.ToInt32(ui_numbox_max.Text))
-            {
-                int temp = Convert.ToInt32(ui_numbox_min.Text);
-                ui_numbox_min.Text = ui_numbox_max.Text;
-                ui_numbox_max.Text = temp.ToString();
-            }
-            result_text.Text += random.Next(Convert.ToInt32(ui_numbox_min.Text), Convert.ToInt32(ui_numbox_max.Text)).ToString();
+            result_text.Visibility = Visibility.Visible;
             count_left--;
         }
 

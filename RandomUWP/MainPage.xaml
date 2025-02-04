@@ -6,12 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="GhostWhite"
+    Background="WhiteSmoke"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
 
     <Grid>
 
-        <muxc:NavigationView x:Name="NavView" PaneDisplayMode="LeftCompact" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" IsPaneToggleButtonVisible="True" IsTitleBarAutoPaddingEnabled="True"   Loaded="NavigationView_Loaded" SelectionChanged="NavigationView_SelectionChanged">
+        <muxc:NavigationView x:Name="NavView" PaneDisplayMode="LeftCompact" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" IsPaneToggleButtonVisible="True" IsTitleBarAutoPaddingEnabled="True" Loaded="NavigationView_Loaded" SelectionChanged="NavigationView_SelectionChanged">
 
         <muxc:NavigationView.MenuItems>
             <muxc:NavigationViewItem   Content="数字模式" Tag="RandomUWP.NumMode">
